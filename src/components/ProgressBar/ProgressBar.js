@@ -15,7 +15,9 @@ const ProgressBar = ({ value, size }) => {
       aria-valuemax="100"
     >
       <VisuallyHidden>{value}</VisuallyHidden>
-      <Bar value={value} />
+      <Trimmer>
+        <Bar value={value} />
+      </Trimmer>
     </Base>
   );
 };
@@ -33,7 +35,13 @@ const Bar = styled.div`
   width: ${(props) => props.value + "%"};
   height: 100%;
   background-color: ${COLORS.primary};
-  border-radius: inherit;
+`;
+
+const Trimmer = styled.div`
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 `;
 const SIZES = {
   small: {
